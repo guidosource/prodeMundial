@@ -1,0 +1,16 @@
+.title{
+    font-family: 'Aldrich', sans-serif;
+    margin-top : 30px;
+    margin-bottom : 30px;
+}
+
+.proximo{
+    font-family: 'Pacifico', cursive;
+}
+
+
+.panel-resultado{
+    margin-top: 50px;
+    background: darkgrey;
+    border-radius: 10px;
+}

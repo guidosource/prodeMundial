@@ -1,0 +1,99 @@
+
+<app-loading *ngIf='loading'></app-loading>
+
+<div *ngIf='!loading'>
+
+  <div class="animated fadeIn fast">
+    <div class="row justify-content-center">
+      <div class="col-md-3">
+        <div class=" title text-center">
+          <h1>Usuarios</h1>
+        </div>
+      </div>
+    </div>
+  
+    <div class="tabla row justify-content-center">
+      <div class=" col-md-3">
+        <table class="table">
+          <thead>
+            <th>Nombre</th>
+            <th>Participación</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usuario of usuarios ; let i = index">
+              <td>
+                {{usuario.nombre}}
+              </td>
+              <td>
+                <input [(ngModel)]="usuarios[i].participo" class="custom-control" type="checkbox" name="checkbox">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row justify-content-center text-center">
+      <div class="col-md-6 footer">
+        <button class=' btn btn-primary btn-sm' (click)="guardarCambios()">
+          <i class="far fa-save"></i> Guardar Cambios</button>
+        &nbsp;
+        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal">
+          <i class="fas fa-user-plus"></i> Nuevo Participante</button>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-auto">
+          <div *ngIf='err' class="alert alert-danger" >
+              Ya existe ese participiante. Por favor ingrese con otro nombre.
+            </div>
+        <div *ngIf='cambiosOk' class="animated fadeIn fast alert alert-success text-center" role="alert">
+          <Strong>Actualizado!</Strong>
+        </div>
+      </div>
+    </div>
+  
+  
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Nuevo Participante</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label>Nombre
+              </label>
+              <input [(ngModel)]="nuevoNombre" class="form-control" type="text" name="nombre">
+            </div>
+            <div class="form-group">
+              <label >Contraseña
+              </label>
+              <input [(ngModel)]="nuevoPass" class="form-control" type="password" name="pass">
+            </div>
+            <div class="form-group">
+              <label >Admin&nbsp;
+              </label>
+              <input [(ngModel)]="nuevoRole"  type="checkbox" name="admin">
+            </div>
+          </form>
+         
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="nuevoUsuario()">Nuevo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
