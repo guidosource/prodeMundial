@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { GlobalService } from './global.services';
 import { Router } from '@angular/router';
-import { Usuario } from '../clases/usuario.interface';
+
 
 @Injectable()
 export class LoginService {
