@@ -1,8 +1,9 @@
 import { Component,  } from '@angular/core';
 import { ResultadosService } from '../../services/resultados.services';
 import { UsuariosService } from '../../services/usuarios.services';
-
+import { LoginService } from '../../services/login.services';
 import { Resultado } from '../../clases/Resultado';
+import { Router } from '@angular/router';
 
 
 
@@ -21,7 +22,8 @@ export class TablaComponent  {
   
   tablaPosiciones: any[] = [];
 
-  constructor(private _resultadosService:ResultadosService, private _usuariosServices:UsuariosService) {
+  constructor(private _login:LoginService, private _resultadosService:ResultadosService,
+     private _usuariosServices:UsuariosService, private _router:Router) {
       
     this.loading = true;
 
@@ -40,6 +42,11 @@ export class TablaComponent  {
           
          });
         
+      },err=>{
+        if(err.status === 401){
+          this._login.logout();
+          this._router.navigate(['Login']);
+        }
       });
       
     

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { PartidosService } from '../../services/partidos.services';
 import { UsuariosService } from '../../services/usuarios.services';
+import { Router } from '@angular/router';
+import { LoginService } from '../../services/login.services';
 
 @Component({
   selector: 'app-prode',
@@ -17,7 +19,8 @@ export class ProdeComponent  {
 
   loading:Boolean; // flag de carga.  
 
-  constructor(private _partidosServices:PartidosService, private _usuariosServices:UsuariosService) {
+  constructor(private _login:LoginService, private _router:Router,
+    private _partidosServices:PartidosService, private _usuariosServices:UsuariosService) {
 
     this.loading = true;
 
@@ -28,6 +31,11 @@ export class ProdeComponent  {
 
         this.loading = false;
 
+    },err=>{
+      if( err.status === 401 ){
+          this._login.logout();
+          this._router.navigate(['Login']);
+      }
     });
 
    }

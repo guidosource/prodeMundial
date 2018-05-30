@@ -44,6 +44,22 @@ export class UsuariosService {
         });
     }
 
+    actualizarPassword(password:String){
+        const options = {
+            headers : new HttpHeaders({
+                'Content-Type' : 'application/json',
+                'token' : localStorage.getItem('token')
+            })
+        };
+
+        const body = {
+            password
+        };
+
+        return this._http.put(this._global.URL_SERVER + '/actualizarpass',body,options);
+    }
+
+
     actualizarParticipo(id:String, participo:Boolean){
         const options = {
             headers : new HttpHeaders({

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ResultadosService } from '../../services/resultados.services';
 import { PartidosService } from '../../services/partidos.services';
 import { Router } from '@angular/router';
+import { LoginService } from '../../services/login.services';
+
 
 @Component({
   selector: 'app-resultados',
@@ -20,7 +22,8 @@ export class ResultadosComponent  {
 
   loading:Boolean;
 
-  constructor(private _router:Router, private _resultadosService:ResultadosService, private _partidoService:PartidosService) { 
+  constructor(private _login:LoginService, private _router:Router,
+     private _resultadosService:ResultadosService, private _partidoService:PartidosService) { 
     
     this.loading = true;
 
@@ -32,6 +35,12 @@ export class ResultadosComponent  {
           this.ultimoPartido = this.partidos[this.resultados.length];
         
           this.loading = false;
+      },err=>{
+          if(err.status === 401){
+            this._login.logout();
+            this._router.navigate(['Login']);
+
+          }
       });
     
   }

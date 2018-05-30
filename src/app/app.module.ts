@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 //Rutas
 import { APPROUTING } from './app.routes';
@@ -41,7 +41,8 @@ import { PosicionesComponent } from './components/tabla/posiciones/posiciones.co
     BrowserModule,
     APPROUTING,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
 
   ],
   providers: [ResultadosService,

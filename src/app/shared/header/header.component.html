@@ -1,7 +1,6 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <img src="../../../assets/img/cup.png" alt="">
-      &nbsp;
+    <img src="../../../assets/img/cup.png" alt=""> &nbsp;
     <a class="navbar-brand" [routerLink]="['Login']">SanAgus</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -17,16 +16,77 @@
           <a class="nav-link" [routerLink]="['tabla']">Tabla de Posiciones</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" [routerLink]="['resultados']">Resultados</a>
+          <a class="nav-link" [routerLink]="['resultados']">Resultados</a>
         </li>
-        <li *ngIf="isAdmin()" class="nav-item" routerLinkActive="active">
-            <a class="nav-link" [routerLink]="['adminuser']">Usuarios</a>
+        <li *ngIf="isAdmin()" class="nav-item a" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['adminuser']">Usuarios</a>
         </li>
       </ul>
-      <span  class="navbar-text">
-        Hola {{userName}} !! 
-        <button class="btn btn-link btn-sm" (click)="logout()">Cerrar Sesión <i class="fas fa-sign-out-alt"></i></button>
+
+
+
+    </div>
+    <div>
+
+      <span class="navbar-text">
+        <button class="btn btn-primary btn-sm" data-toggle="modal" data-backdrop="static"  data-target=".bd-example-modal-sm">{{userName}}
+          <i class="far fa-user"></i>
+        </button>
+
+        <button class="btn btn-link btn-sm" (click)="logout()">Cerrar Sesión
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+
+
       </span>
     </div>
   </nav>
 </header>
+
+
+
+
+<div class=" modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class=" modal-dialog modal-sm">
+    <div class="perfil modal-content">
+      <div class="modal-header">
+        <h2>Perfil</h2>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="saveChanges()" novalidate="novalidate">
+          <label>Contraseña:</label>
+          <div class="form-group ">
+            <input class="form-control" type="password" placeholder="Contraseña actual" formControlName="oldpass">
+            <div *ngIf="form.controls['oldpass'].invalid && form.controls['oldpass'].touched == true" class="error">
+              <small>Requerido.</small>
+            </div>
+            <div *ngIf="invalidPass" class="error">
+              <small>Contraseña incorrecta.</small>
+            </div>
+          </div>
+          <div class="form-group">
+            
+              <input class="form-control" type="password" placeholder="Nueva contraseña" formControlName="newpass">
+              <div *ngIf="form.controls['newpass'].invalid && form.controls['newpass'].touched == true" class="error">
+                  <small>Requerido.</small>
+                </div>
+            </div>
+     
+            <div class="form-group">
+                <input class="form-control" type="password"  placeholder="Repetir nueva contraseña" formControlName="renewpass">
+                <div *ngIf="form.controls['renewpass'].invalid && form.controls['renewpass'].touched == true" class="error">
+                    <small>Las contraseñas deben coincidir.</small>
+                  </div>
+              </div>
+              <div class="form-group">
+                <button [disabled]="form.status == 'INVALID'"  type="submit" class="btn btn-primary ">Aceptar</button>
+              </div>
+              <div *ngIf="isOk" class="alert alert-success">Contraseña Actualizada!</div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal" (click)="resetForm()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

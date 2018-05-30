@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.services';
+import { Router } from '@angular/router';
+import { LoginService } from '../../services/login.services';
 
 @Component({
   selector: 'app-adminuser',
@@ -19,7 +21,7 @@ export class AdminuserComponent  {
 
   err:Boolean;
 
-  constructor(private _usuariosServices:UsuariosService) {
+  constructor(private _login:LoginService, private _router:Router,private _usuariosServices:UsuariosService) {
     
     this.loading = true;
 
@@ -29,6 +31,11 @@ export class AdminuserComponent  {
    
       this.loading = false;
 
+    },err=>{
+      if( err.status === 401 ){
+          this._login.logout();
+          this._router.navigate(['Login']);
+      }
     });
     
   
