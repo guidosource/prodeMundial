@@ -61,12 +61,12 @@ export class PartidosService {
         'visitante' : 'Inglaterra'
       },{
         'partido' : '15',
-        'local' : 'Polonia',
-        'visitante' : 'Senegal'
-      },{
-        'partido' : '16',
         'local' : 'Colombia',
         'visitante' : 'Japón'
+      },{
+        'partido' : '16',
+        'local' : 'Polonia',
+        'visitante' : 'Senegal'
       },{
         'partido' : '17',
         'local' : 'Rusia',
@@ -85,12 +85,12 @@ export class PartidosService {
         'visitante' : 'España'
       },{
         'partido' : '21',
-        'local' : 'Francia',
-        'visitante' : 'Perú'
-      },{
-        'partido' : '22',
         'local' : 'Dinamarca',
         'visitante' : 'Australia'
+      },{
+        'partido' : '22',
+        'local' : 'Francia',
+        'visitante' : 'Perú'
       },{
         'partido' : '23',
         'local' : 'Argentina',
@@ -113,23 +113,23 @@ export class PartidosService {
         'visitante' : 'Túnez'
       },{
         'partido' : '28',
-        'local' : 'Alemania',
-        'visitante' : 'Suecia',
+        'local' : 'Corea del Sur',
+        'visitante' : 'México',
       },{
         'partido' : '29',
-        'local' : 'Corea del Sur',
-        'visitante' : 'México'
+        'local' : 'Alemania',
+        'visitante' : 'Suecia'
       },{
         'partido' : '30',
         'local' : 'Inglaterra',
         'visitante' : 'Panamá'
       },{
         'partido' : '31',
-        'local' : 'Polonia',
-        'visitante' : 'Colombia'
+        'local' : 'Japón',
+        'visitante' : 'Senegal'
       },{
         'partido' : '32',
-        'local' : 'Japón',
+        'local' : 'Polonia',
         'visitante' : 'Colombia'
       },{
         'partido' : '33',
