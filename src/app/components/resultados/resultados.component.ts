@@ -21,6 +21,9 @@ export class ResultadosComponent  {
   nuevoPartido:String = 'Local';
 
   loading:Boolean;
+  
+  banderaSource = '../../../assets/img/banderas/';
+
 
   constructor(private _login:LoginService, private _router:Router,
      private _resultadosService:ResultadosService, private _partidoService:PartidosService) { 

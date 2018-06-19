@@ -18,8 +18,14 @@
         <tbody>
           <tr *ngFor="let item of resultados ; let i = index">
             <td>#{{item.partido}}</td>
-            <td>{{partidos[i].local}}</td>
-            <td>{{partidos[i].visitante}}</td>
+            <td>
+              <img [src]="banderaSource + partidos[i].local + '.svg'">
+              {{partidos[i].local}}
+            </td>
+            <td>
+              <img [src]="banderaSource + partidos[i].visitante + '.svg'">
+              {{partidos[i].visitante}}
+            </td>
             <td>{{item.resultado}}</td>
           </tr>
         </tbody>
@@ -33,7 +39,8 @@
            
         </div>
         <div *ngIf="ultimoPartido != null" class="proximo  alert alert-success" role="alert">
-            Próximo partido : {{ultimoPartido.local}} vs {{ultimoPartido.visitante}}
+            Próximo partido : {{ultimoPartido.local}} <img [src]="banderaSource + ultimoPartido.local + '.svg'">
+             vs <img [src]="banderaSource + ultimoPartido.visitante + '.svg'"> {{ultimoPartido.visitante}}
         </div>
       </div>
       

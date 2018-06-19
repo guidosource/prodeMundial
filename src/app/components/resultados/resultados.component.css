@@ -13,4 +13,9 @@
     margin-top: 50px;
     background: darkgrey;
     border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+img{
+    width: 30px;
 }
