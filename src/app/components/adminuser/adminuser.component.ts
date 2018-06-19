@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UsuariosService } from '../../services/usuarios.services';
+import { PartidosService } from '../../services/partidos.services';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.services';
 
@@ -11,6 +12,7 @@ import { LoginService } from '../../services/login.services';
 export class AdminuserComponent  {
 
   usuarios:any[] = [];
+  partidos: any[] = [];
   cambiosOk = false;
 
   nuevoNombre:String = '';
@@ -21,9 +23,18 @@ export class AdminuserComponent  {
 
   err:Boolean;
 
-  constructor(private _login:LoginService, private _router:Router,private _usuariosServices:UsuariosService) {
+  //ProdeUsuarios
+  user:any;
+
+  resultados:any = false;
+  
+
+  constructor(private _login:LoginService, private _partidosServices:PartidosService
+    , private _router:Router,private _usuariosServices:UsuariosService) {
     
     this.loading = true;
+
+    this.partidos = this._partidosServices.obtenerPartidos();
 
     this._usuariosServices.todosLosUsuarios()
     .subscribe( (res:any)=>{
@@ -40,6 +51,11 @@ export class AdminuserComponent  {
     
   
 
+   }
+
+   verProde(i:any){
+      this.user = this.usuarios[i];
+      this.resultados = true;
    }
 
    guardarCambios(){
